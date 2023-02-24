@@ -36,3 +36,26 @@ function onReady() {
         attackPoints -= 25;
         break;
     }
+
+    // Ensure HP and AP values do not negative values
+    if (fungusHP < 0) {
+      fungusHP = 0;
+    }
+    if (attackPoints < 0) {
+      attackPoints = 0;
+    }
+
+    // Render state changes to the DOM
+    $('.ap-text').text(`${attackPoints} AP`);
+    $('#ap-meter').val(attackPoints);
+    $('.hp-text').text(`${fungusHP} HP`);
+    $('#hp-meter').val(fungusHP);
+
+    // Check if the game is over
+    if (fungusHP === 0) {
+      $('.freaky-fungus').removeClass('walk').addClass('dead');
+      $('.attack-btn').attr('disabled', true);
+    } else if (attackPoints === 0) {
+      $('.freaky-fungus').removeClass('walk').addClass('jump');
+      $('.attack-btn').attr('disabled', true);
+    }
