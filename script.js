@@ -59,3 +59,35 @@ function onReady() {
       $('.freaky-fungus').removeClass('walk').addClass('jump');
       $('.attack-btn').attr('disabled', true);
     }
+    
+      // Stretch Questions
+      // Render changes to the DOM
+    renderAP();
+    renderHP();
+    renderProgressBar();
+      function renderAP() {
+        $('.ap-text').text(`${attackAP} AP`);
+    }
+    
+    function renderHP() {
+        $('.hp-text').text(`${fungusHP} HP`);
+    }
+    
+    function renderProgressBar() {
+        $('#ap-meter').val(attackAP);
+        $('#hp-meter').val(fungusHP);
+      if (fungusHP <= 50) {
+        setInterval(() => {
+            fungusHP = Math.min(fungusHP + 1, 100);
+            renderHP();
+            }, 1000);
+        }
+    }
+}
+
+    // 🧠 Remember
+    // - Handle events that ->
+    // - Updates state which is ->
+    // - Rendered to the DOM
+  
+}
